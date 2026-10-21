@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Twingate Dashboard</title>
+  <style>
+    #import-btn {
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    #import-btn:hover {
+      color: var(--text);
+      border-color: var(--accent);
+      filter: none;
+    }
+
+    .import-status {
+      padding: 0 1.25rem;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      min-height: 1rem;
+      white-space: pre-wrap;
+      max-height: 8rem;
+      overflow-y: auto;
+    }
+
+    :root {
+      --bg-deep: #0a0c10;
+      --bg-panel: #12151c;
+      --bg-elevated: #1a1f2b;
+      --border: #2a3142;
+      --text: #e8ecf4;
+      --text-muted: #8b95a8;
+      --accent: #6c8cff;
+      --accent-glow: #8b5cf6;
+      --success: #34d399;
+      --warning: #fbbf24;
+      --radius: 10px;
+      --font-mono: "Cascadia Code", "Fira Code", "Consolas", monospace;
+      --font-sans: "Segoe UI", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-deep);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Compact Top Bar ── */
+    .top-bar {
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      padding: 0.45rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-shrink: 0;
+      min-height: 42px;
+    }
+
+    .top-bar h1 {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .top-bar-controls {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .compact-control {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .compact-control label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .compact-control input[type="number"] {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--text);
+      padding: 0.25rem 0.4rem;
+      font-size: 0.78rem;
+      width: 52px;
+    }
+
+    .compact-control input[type="range"] {
+      width: 90px;
+      accent-color: var(--accent);
+    }
+
+    .range-value {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      min-width: 1ch;
+    }
+
+    .settings-btn {
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.3rem 0.65rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .settings-btn:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    /* ── Settings Modal ── */
+    .settings-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 100;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 48px 1rem 1rem;
+    }
+
+    .settings-overlay.open { display: flex; }
+
+    .settings-panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      width: 340px;
+      max-height: calc(100vh - 60px);
+      overflow-y: auto;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .settings-panel h2 {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    .settings-panel .config-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .settings-panel .config-group label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .settings-panel input[type="password"] {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      padding: 0.4rem 0.6rem;
+      font-size: 0.82rem;
+      width: 100%;
+    }
+
+    .save-keys-btn {
+      background: var(--bg-elevated);
+      color: var(--text);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    .save-keys-btn:hover { background: var(--accent); color: #fff; }
+    .save-keys-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .key-status {
+      font-size: 0.7rem;
+      color: var(--success);
+      min-height: 1rem;
+      margin-top: 0.4rem;
+    }
+
+    .settings-close {
+      float: right;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .settings-close:hover { color: var(--text); }
+
+    /* ── Main Layout ── */
+    .dashboard {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 0;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    /* Right rail: emotional monitor on top, daemon monitor beneath */
+    .right-rail {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      border-left: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    /* ── Main Display (Tabbed) ── */
+    .main-display {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      min-height: 0;
+    }
+
+    .tab-bar {
+      display: flex;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.75rem 1.25rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .tab-btn:hover { color: var(--text); }
+
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .tab-panel {
+      display: none;
+      flex: 1;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .tab-panel.active { display: flex; }
+
+    /* Chat Terminal */
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+
+    .msg {
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius);
+      max-width: 92%;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .msg.user {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      align-self: flex-end;
+    }
+
+    .msg.synth {
+      background: #151a28;
+      border: 1px solid #2e3a5c;
+      align-self: flex-start;
+    }
+
+    .msg .tag {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-glow);
+      margin-bottom: 0.3rem;
+    }
+
+    .chat-input-row {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      background: var(--bg-panel);
+      border-top: 1px solid var(--border);
+      align-items: flex-end;
+    }
+
+    .chat-input-row textarea {
+      flex: 1;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      padding: 0.6rem 0.85rem;
+      font-size: 0.85rem;
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      resize: vertical;
+      min-height: 2.6rem;
+      max-height: 40vh;
+      overflow-y: auto;
+    }
+
+    .chat-input-row textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .chat-input-row button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .chat-input-row button:hover { filter: brightness(1.1); }
+    .chat-input-row button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* System Logs */
+    .log-display {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: var(--success);
+      background: #080a0e;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    /* ── Daemon Monitor Panel ── */
+    .daemon-panel {
+      background: var(--bg-panel);
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .panel-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .daemon-activity {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .daemon-entry {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.55rem 0.7rem;
+      font-size: 0.75rem;
+    }
+
+    .daemon-entry .src {
+      color: var(--warning);
+      font-weight: 600;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .daemon-entry .ts {
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+    }
+
+    .daemon-entry .body {
+      margin-top: 0.25rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .scheduled-tasks {
+      border-top: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+    }
+
+    .scheduled-tasks h3 {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .task-placeholder {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 0.5rem;
+      background: var(--bg-elevated);
+      border-radius: 6px;
+      border: 1px dashed var(--border);
+    }
+
+    /* ── Emotional Monitor ── */
+    .mood-panel {
+      background: var(--bg-panel);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.7rem 0.5rem;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .mood-ring {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #3b82f6 0deg 60deg,
+        #6366f1 60deg 120deg,
+        #8b5cf6 120deg 180deg,
+        #a855f7 180deg 240deg,
+        #22d3a0 240deg 300deg,
+        #34d399 300deg 360deg
+      );
+      position: relative;
+      box-shadow: 0 0 21px rgba(99, 102, 241, 0.25);
+      transition: background 0.6s ease;
+    }
+
+    .mood-ring::after {
+      content: "";
+      position: absolute;
+      inset: 22%;
+      border-radius: 50%;
+      background: var(--bg-deep);
+      border: 1px solid var(--border);
+    }
+
+    .mood-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .mood-caption {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Compact Top Bar -->
+  <header class="top-bar">
+    <h1>TWINGATE</h1>
+    <div class="top-bar-controls">
+      <div class="compact-control">
+        <label for="wcr-depth">WCR Depth</label>
+        <input type="range" id="wcr-depth" min="1" max="10" value="3" />
+        <span class="range-value" id="wcr-depth-val">3</span>
+      </div>
+      <div class="compact-control">
+        <label for="compress-collecticks">Collecticks</label>
+        <input type="number" id="compress-collecticks" min="1" max="20" value="5" />
+      </div>
+      <button type="button" class="settings-btn" id="settings-toggle">⚙️ API Keys</button>
+    </div>
+  </header>
+
+  <!-- Settings Modal -->
+  <div class="settings-overlay" id="settings-overlay">
+    <div class="settings-panel" id="settings-panel">
+      <button type="button" class="settings-close" id="settings-close" aria-label="Close">&times;</button>
+      <h2>API Keys</h2>
+      <div class="config-group">
+        <label for="key-gemini">Gemini</label>
+        <input type="password" id="key-gemini" class="api-key-input" data-service="gemini" placeholder="Gemini key" />
+      </div>
+      <div class="config-group">
+        <label for="key-claude">Claude</label>
+        <input type="password" id="key-claude" class="api-key-input" data-service="claude" placeholder="Claude key" />
+      </div>
+      <div class="config-group">
+        <label for="key-mistral">Mistral</label>
+        <input type="password" id="key-mistral" class="api-key-input" data-service="mistral" placeholder="Mistral key" />
+      </div>
+      <div class="config-group">
+        <label for="key-deepseek">DeepSeek</label>
+        <input type="password" id="key-deepseek" class="api-key-input" data-service="deepseek" placeholder="DeepSeek key" />
+      </div>
+      <div class="config-group">
+        <label for="key-grok">Grok</label>
+        <input type="password" id="key-grok" class="api-key-input" data-service="grok" placeholder="Grok key" />
+      </div>
+      <div class="config-group">
+        <label for="key-perplexity">Perplexity Key</label>
+        <input type="password" id="key-perplexity" class="api-key-input" data-service="perplexity" placeholder="Perplexity key" />
+      </div>
+      <button type="button" class="save-keys-btn" id="save-keys-btn">Save Keys</button>
+      <div class="key-status" id="key-status"></div>
+    </div>
+  </div>
+
+  <div class="dashboard">
+
+    <!-- Main Display Area (Tabbed) -->
+    <section class="main-display">
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="terminal">Synthesiz.r Terminal</button>
+        <button class="tab-btn" data-tab="logs">System Logs</button>
+      </div>
+
+      <div class="tab-panel active" id="panel-terminal">
+        <div class="chat-messages" id="chat-messages">
+          <div class="msg synth">
+            <div class="tag">Synthesiz.r</div>
+            Council online. Awaiting your prompt.
+          </div>
+        </div>
+        <div class="chat-input-row">
+          <textarea id="chat-input" rows="3" placeholder="Enter prompt for the WCR council...  (Enter to send, Shift+Enter for a new line)"></textarea>
+          <button id="import-btn" title="Import .txt / .md / .py into the council archive">Import</button>
+          <button id="send-btn">Transmit</button>
+        </div>
+        <input type="file" id="import-file-input" accept=".txt,.md,.py" multiple style="display:none" />
+        <div class="import-status" id="import-status"></div>          
+      </div>
+
+      <div class="tab-panel" id="panel-logs">
+        <pre class="log-display" id="log-display">[SYSTEM] Awaiting log stream...</pre>
+      </div>
+    </section>
+
+    <!-- Right Rail: Emotional Monitor (top) + Daemon Monitor (below) -->
+    <div class="right-rail">
+
+      <!-- Emotional Monitor -->
+      <aside class="mood-panel">
+        <div class="panel-title" style="border:none; padding:0;">Emotional Monitor</div>
+        <div class="mood-ring" id="mood-ring"></div>
+        <div class="mood-label">Council Mood</div>
+        <div class="mood-caption" id="mood-caption">Baseline coherence</div>
+      </aside>
+
+      <!-- Daemon Monitor Panel -->
+      <aside class="daemon-panel">
+        <div class="panel-title">Daemon Monitor</div>
+        <div class="daemon-activity" id="daemon-activity">
+          <div class="task-placeholder">Listening for daemon activity...</div>
+        </div>
+        <div class="scheduled-tasks">
+          <h3>Scheduled Tasks</h3>
+          <div class="task-placeholder" id="scheduled-tasks">
+            No tasks scheduled.<br />Chronos standby.
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+  </div>
+
+  <script>
+    const wcrSlider = document.getElementById("wcr-depth");
+    const wcrVal = document.getElementById("wcr-depth-val");
+    const compressInput = document.getElementById("compress-collecticks");
+    const chatInput = document.getElementById("chat-input");
+    const sendBtn = document.getElementById("send-btn");
+    const chatMessages = document.getElementById("chat-messages");
+    const saveKeysBtn = document.getElementById("save-keys-btn");
+    const keyStatus = document.getElementById("key-status");
+    const settingsToggle = document.getElementById("settings-toggle");
+    const settingsOverlay = document.getElementById("settings-overlay");
+    const settingsPanel = document.getElementById("settings-panel");
+    const settingsClose = document.getElementById("settings-close");
+
+    // ── Settings modal toggle ──
+    function openSettings() { settingsOverlay.classList.add("open"); }
+    function closeSettings() { settingsOverlay.classList.remove("open"); }
+
+    settingsToggle.addEventListener("click", () => {
+      settingsOverlay.classList.contains("open") ? closeSettings() : openSettings();
+    });
+    settingsClose.addEventListener("click", closeSettings);
+    settingsOverlay.addEventListener("click", e => {
+      if (e.target === settingsOverlay) closeSettings();
+    });
+    settingsPanel.addEventListener("click", e => e.stopPropagation());
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") closeSettings();
+    });
+
+    // ── File Import ──
+    const importBtn = document.getElementById("import-btn");
+    const importFileInput = document.getElementById("import-file-input");
+    const importStatus = document.getElementById("import-status");
+
+    importBtn.addEventListener("click", () => importFileInput.click());
+
+    importFileInput.addEventListener("change", async () => {
+      const files = Array.from(importFileInput.files);
+      if (files.length === 0) return;
+
+      if (files.length > 3) {
+        importStatus.textContent = "[LIMIT] Please import at most 3 files at a time.";
+        importStatus.style.color = "var(--warning)";
+        importFileInput.value = "";
+        return;
+      }
+
+      importStatus.style.color = "var(--text-muted)";
+      importStatus.textContent = "";
+
+      for (const file of files) {
+        // Client-side collision can't be known, so ask up front for .py files
+        // that the user said they update often. For .txt/.md default to overwrite.
+        let collisionMode = "overwrite";
+        if (file.name.toLowerCase().endsWith(".py")) {
+          const keepBoth = confirm(
+            `Importing "${file.name}".\n\n` +
+            `OK = overwrite if it already exists (recommended for files you update).\n` +
+            `Cancel = keep both (saves a numbered copy).`
+          );
+          collisionMode = keepBoth ? "overwrite" : "copy";
+        }
+
+        const form = new FormData();
+        form.append("file", file);
+        form.append("collision_mode", collisionMode);
+
+        importStatus.textContent += `→ ${file.name}: uploading...\n`;
+
+        try {
+          const res = await fetch("/import_file", { method: "POST", body: form });
+          const data = await res.json();
+
+          // Read the per-stage alarms back to the user.
+          const s1 = data.stage_1_validation;
+          const s2 = data.stage_2_disk_write;
+          const s3 = data.stage_3_ingestion;
+
+          if (s1 !== "OK") {
+            importStatus.textContent += `   ✗ ${data.message}\n`;
+            importStatus.style.color = "var(--warning)";
+          } else if (s2 !== "OK") {
+            importStatus.textContent += `   ✗ ${data.message}\n`;
+            importStatus.style.color = "var(--warning)";
+          } else {
+            // Disk write succeeded. Stage 3 may be OK, skipped, or non-fatally failed.
+            let line = `   ✓ saved`;
+            if (s3 === "OK") line += " + indexed";
+            else if (String(s3).startsWith("SKIPPED")) line += " (not indexed yet)";
+            else line += " (index step failed — file is safe on disk)";
+            importStatus.textContent += line + "\n";
+            importStatus.style.color = "var(--success)";
+          }
+        } catch (err) {
+          importStatus.textContent += `   ✗ network error: ${err.message}\n`;
+          importStatus.style.color = "var(--warning)";
+        }
+      }
+
+      importFileInput.value = "";  // reset so the same file can be re-selected
+    });
+
+    // ── Tab switching ──
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("panel-" + btn.dataset.tab).classList.add("active");
+        if (btn.dataset.tab === "logs") fetchDaemonLogs();
+      });
+    });
+
+    // ── WCR Depth slider display ──
+    wcrSlider.addEventListener("input", () => { wcrVal.textContent = wcrSlider.value; });
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    function appendMessage(text, role) {
+      const div = document.createElement("div");
+      div.className = "msg " + role;
+      if (role === "synth") {
+        div.innerHTML = '<div class="tag">Synthesiz.r</div>' + escapeHtml(text);
+      } else {
+        div.textContent = text;
+      }
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // ── Submit API Keys ──
+    function gatherApiKeys() {
+      const keys = {};
+      document.querySelectorAll(".api-key-input").forEach(input => {
+        const service = input.dataset.service;
+        const value = input.value.trim();
+        if (service && value) {
+          keys[service] = value;
+        }
+      });
+      return keys;
+    }
+
+    async function submitApiKeys() {
+      const keys = gatherApiKeys();
+      if (Object.keys(keys).length === 0) {
+        keyStatus.textContent = "Enter at least one API key.";
+        keyStatus.style.color = "var(--warning)";
+        return;
+      }
+
+      saveKeysBtn.disabled = true;
+      keyStatus.textContent = "Saving...";
+      keyStatus.style.color = "var(--text-muted)";
+
+      try {
+        const res = await fetch("/update_keys", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ keys }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.detail || "Key update failed.");
+        }
+        keyStatus.textContent = `Authorized: ${data.updated.join(", ")}`;
+        keyStatus.style.color = "var(--success)";
+        setTimeout(closeSettings, 1200);
+      } catch (err) {
+        keyStatus.textContent = `[ERROR] ${err.message}`;
+        keyStatus.style.color = "var(--warning)";
+      } finally {
+        saveKeysBtn.disabled = false;
+      }
+    }
+
+    saveKeysBtn.addEventListener("click", submitApiKeys);
+
+    // ── Send Chat Payload ──
+    async function sendChat() {
+      const message = chatInput.value.trim();
+      if (!message) return;
+
+      const payload = {
+        message: message,
+        wcr_depth: parseInt(wcrSlider.value, 10),
+        compress_collecticks: parseInt(compressInput.value, 10),
+      };
+
+      appendMessage(message, "user");
+      chatInput.value = "";
+      sendBtn.disabled = true;
+
+      try {
+        const res = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.detail || "Chat request failed.");
+        }
+        appendMessage(data.response || "[EMPTY RESPONSE]", "synth");
+      } catch (err) {
+        appendMessage(`[ERROR] ${err.message}`, "synth");
+      } finally {
+        sendBtn.disabled = false;
+        chatInput.focus();
+      }
+    }
+
+    sendBtn.addEventListener("click", sendChat);
+    chatInput.addEventListener("keydown", e => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendChat();
+      }
+    });
+
+    // ── Poll Logs ──
+    async function fetchDaemonLogs() {
+      const logDisplay = document.getElementById("log-display");
+      const daemonActivity = document.getElementById("daemon-activity");
+
+      try {
+        const res = await fetch("/get_daemon_logs");
+        if (!res.ok) {
+          throw new Error("Log fetch failed.");
+        }
+
+        const logText = await res.text();
+        logDisplay.textContent = logText || "[SYSTEM] No log data available.";
+
+        const lines = logText.split("\n").filter(l => l.trim());
+        if (lines.length === 0) {
+          daemonActivity.innerHTML = '<div class="task-placeholder">No daemon activity recorded.</div>';
+        } else {
+          daemonActivity.innerHTML = lines.slice(-30).map(line => `
+            <div class="daemon-entry">
+              <div class="src">WCR MASTER LOG</div>
+              <div class="body">${escapeHtml(line)}</div>
+            </div>
+          `).join("");
+        }
+      } catch (err) {
+        logDisplay.textContent = "[ERROR] Failed to fetch daemon logs.";
+        daemonActivity.innerHTML = '<div class="task-placeholder">Daemon monitor offline.</div>';
+      }
+    }
+
+    fetchDaemonLogs();
+    setInterval(fetchDaemonLogs, 5000);
+
+    // ── Emotional Monitor stub ──
+    /**
+     * Update the council mood radial gradient.
+     * @param {string[]} colors - Array of hex/rgb color stops for the conic-gradient.
+     */
+    function updateMood(colors) {
+      const ring = document.getElementById("mood-ring");
+      if (!colors || colors.length === 0) return;
+
+      const segment = 360 / colors.length;
+      const stops = colors.map((c, i) => {
+        const start = Math.round(i * segment);
+        const end = Math.round((i + 1) * segment);
+        return `${c} ${start}deg ${end}deg`;
+      });
+
+      ring.style.background = `conic-gradient(${stops.join(", ")})`;
+      document.getElementById("mood-caption").textContent =
+        `Mood vector: ${colors.length} state blocks active`;
+    }
+  </script>
+</body>
+</html>

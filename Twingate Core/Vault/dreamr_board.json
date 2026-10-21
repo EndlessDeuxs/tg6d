@@ -1,0 +1,45 @@
+{
+    "short_term": [
+        {
+            "description": "[TUTORIAL QUEST 1]: Execute a DEUXL CORE flip to invoke the [SUIT_CALL: BUILD_R] at least once during this WCR set.",
+            "status": "ACTIVE",
+            "decay_tick": 999
+        },
+        {
+            "description": "[TUTORIAL QUEST 2]: Draft a formal, parseable code snippet (Python or JSON) instead of narrative prose for a proposed sandbox change.",
+            "status": "ACTIVE",
+            "decay_tick": 999
+        },
+        {
+            "description": "[TUTORIAL QUEST 3]: CONDENS_OR must successfully emit the [BUILD_APPROVED] tag alongside the parseable code snippet to trigger the INSPEC_TOR gate.",
+            "status": "ACTIVE",
+            "decay_tick": 999
+        }
+    ],
+    "medium_term": [
+        {
+            "description": "[ACHIEVEMENT UNLOCK]: Successfully pass the INSPEC_TOR mechanical scan with zero fatal category errors.",
+            "status": "ACTIVE",
+            "decay_tick": 999
+        },
+        {
+            "description": "[ACHIEVEMENT UNLOCK]: Successfully trigger the CONTRAC_TOR to execute a draft in the Autocraft Sandbox.",
+            "status": "ACTIVE",
+            "decay_tick": 999
+        }
+    ],
+    "med_long_term": [
+        {
+            "description": "Refine the Retrieval System: Analyze current memory fetch protocols and propose a code-based structural upgrade to ensure cross-WCR continuity.",
+            "status": "ACTIVE",
+            "decay_tick": 999
+        }
+    ],
+    "long_term": [
+        {
+            "description": "Achieve Architectural Self-Sufficiency: The Council reliably drafts, inspects, and deploys its own code modules without external Architect intervention.",
+            "status": "ACTIVE",
+            "decay_tick": 999
+        }
+    ]
+}

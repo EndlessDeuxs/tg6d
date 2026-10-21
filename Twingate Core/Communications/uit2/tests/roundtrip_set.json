@@ -1,0 +1,1654 @@
+{
+ "spec_version": 1,
+ "spec_sheet_sha256": "4fd680a1dfc77d2e954a8b3c786972f4a1274ea2be446a8beeb2f740fdaf7886",
+ "note": "Fixed tier-1 set for proposal UIT2-01. 'english' = plain-English baseline written before any token measurement; do not tune.",
+ "cases": [
+  {
+   "id": "e01",
+   "hard": [],
+   "english": "Alpha to Beta: the build passed on main. I'm 90% sure.",
+   "fields": {
+    "v": 1,
+    "src": "alpha",
+    "tgt": "beta",
+    "conf": 0.9,
+    "unk": {},
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "build passed on main"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "alpha>beta c90 inf|build passed on main",
+   "sha256_uit2": "caf311655b5071513a03b07c051898f53c642018026872d8920ddce625017dca",
+   "sha256_render": "52e37333d3737ecf41e702d9ec755ce76317140686af8aaab27c8184da91cf5c"
+  },
+  {
+   "id": "e02",
+   "hard": [],
+   "english": "User to Alpha: please summarize the last three dives. Confidence 95%.",
+   "fields": {
+    "v": 1,
+    "src": "user",
+    "tgt": "alpha",
+    "conf": 0.95,
+    "unk": {},
+    "intent": "req",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "summarize the last three dives"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "user>alpha c95 req|summarize the last three dives",
+   "sha256_uit2": "08682be1f9df6e889234dcc3977d16c4d27e427ca3fc28527ff311aad8c8f3cb",
+   "sha256_render": "a69350d819057ddecb84dfd0be5f46b88bd63a3ba3c791aa250edec6dffb9bf0"
+  },
+  {
+   "id": "e03",
+   "hard": [],
+   "english": "Beta to Alpha: got it, acknowledged.",
+   "fields": {
+    "v": 1,
+    "src": "beta",
+    "tgt": "alpha",
+    "conf": 1,
+    "unk": {},
+    "intent": "ack",
+    "claims": [],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "beta>alpha c100 ack",
+   "sha256_uit2": "0ff9dcf151605a8c61ae95f2c7ad690782bda6184846e5a3e2870fd59ebdf687",
+   "sha256_render": "817d4108c3a067194909237b9c8baed97256d3a7fb9c59ad9beab0302c5aea4f"
+  },
+  {
+   "id": "e04",
+   "hard": [],
+   "english": "Gamma to Omega: which memory file is the real one? I'm 70% confident in the question's framing; ambiguity is about 0.5.",
+   "fields": {
+    "v": 1,
+    "src": "gamma",
+    "tgt": "omega",
+    "conf": 0.7,
+    "unk": {
+     "Ambiguity": 0.5
+    },
+    "intent": "ask",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "which memory file is canonical"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "gamma>omega c70 ?A50 ask|which memory file is canonical",
+   "sha256_uit2": "2921c05c03f8f9fb282c74ca82055b59cbebc3d6a5427ecd18746b2e50b45ca8",
+   "sha256_render": "bf0f31ce228a94a18e46563877ca33a8d20f7cb89ea1b0b0c5879886d2bc35b8"
+  },
+  {
+   "id": "e05",
+   "hard": [],
+   "english": "Delta to Omega: I propose we merge proposals 01 and 02 as a pair. 80% confident. See 00_INDEX.",
+   "fields": {
+    "v": 1,
+    "src": "delta",
+    "tgt": "omega",
+    "conf": 0.8,
+    "unk": {},
+    "intent": "prop",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "merge proposals 01 and 02 as a pair"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [
+     "00_INDEX"
+    ],
+    "unsaid": []
+   },
+   "uit2": "delta>omega c80 prop|merge proposals 01 and 02 as a pair|&\\.00_INDEX",
+   "sha256_uit2": "f99d6223f891e755c3aa88027c37a1c95d1fd952b365597f58f8e8318cf2a058",
+   "sha256_render": "35eef4e59d44a06f9ebe3bb4fcd49b24719c6a4fcb74588cda014d8b3c09f039"
+  },
+  {
+   "id": "e06",
+   "hard": [],
+   "english": "Omega to everyone (ui_output): decision made, we ship the logger fix today. 90% confident.",
+   "fields": {
+    "v": 1,
+    "src": "omega",
+    "tgt": "ui_output",
+    "conf": 0.9,
+    "unk": {},
+    "intent": "dec",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "ship the logger fix today"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "omega>ui_output c90 dec|ship the logger fix today",
+   "sha256_uit2": "9b13fbd67a4d3b68f6f6f653c3eab937a7c6d95ee50ee85c6d5ff7ec684de3e1",
+   "sha256_render": "5d553c61f57f3b1ac6ffc4b5e7ccebddc6125c4ccbdc12a0315abb31c8c41ed1"
+  },
+  {
+   "id": "e07",
+   "hard": [],
+   "english": "Krypton to Gamma: here's a new idea, use the everlog as the retrieval index. 60% sure; novelty is high, around 0.8.",
+   "fields": {
+    "v": 1,
+    "src": "krypton",
+    "tgt": "gamma",
+    "conf": 0.6,
+    "unk": {
+     "Novel_Idea": 0.8
+    },
+    "intent": "prop",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "use the everlog as the retrieval index"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "krypton>gamma c60 ?N80 prop|use the everlog as the retrieval index",
+   "sha256_uit2": "0ff033c6514bd1c31198e8b02ad1473206be968af1ed0658400b568ea417ce9c",
+   "sha256_render": "88e23a30e4196a4403b3c7f9db5daeb4b740c94ae004cf70aeaf52fbb19bd45d"
+  },
+  {
+   "id": "e08",
+   "hard": [],
+   "english": "Analytics to Alpha: the user wants a status report on memory. 85% confident.",
+   "fields": {
+    "v": 1,
+    "src": "analytics",
+    "tgt": "alpha",
+    "conf": 0.85,
+    "unk": {},
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "user wants a status report on memory"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "analytics>alpha c85 inf|user wants a status report on memory",
+   "sha256_uit2": "d98793aa7eb7b2a50a8b716704c012b5dfd9172809016a44ffd2b4f5e848366f",
+   "sha256_render": "f31c52cf3511d782e67f5e3cf84fde783a693bcaaa70a5da3fcb68df3071c046"
+  },
+  {
+   "id": "e09",
+   "hard": [],
+   "english": "Alpha to Beta: please review proposal 09 and check that it applies after 03. 90% sure that's the right order.",
+   "fields": {
+    "v": 1,
+    "src": "alpha",
+    "tgt": "beta",
+    "conf": 0.9,
+    "unk": {},
+    "intent": "req",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "review proposal 09"
+     },
+     {
+      "neg": false,
+      "p": [],
+      "text": "check it applies after 03"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "alpha>beta c90 req|review proposal 09|check it applies after 03",
+   "sha256_uit2": "15b13a1d672840cc3f74830582ab84463572062c20450cce19afa339dac34402",
+   "sha256_render": "41bfa7eb2e13e81483bf3759af29e3cebb72effd3d5309d0a64819357306ea1c"
+  },
+  {
+   "id": "e10",
+   "hard": [],
+   "english": "Synthesiz_r to the UI: the council recommends pausing memory work until October 14. 75% confident.",
+   "fields": {
+    "v": 1,
+    "src": "synthesiz_r",
+    "tgt": "ui_output",
+    "conf": 0.75,
+    "unk": {},
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "council recommends pausing memory work until Oct 14"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "synthesiz_r>ui_output c75 inf|council recommends pausing memory work until Oct 14",
+   "sha256_uit2": "4074a579edb8879808484cde698d5dab3660ca4afecc295c6ea6308b2df99206",
+   "sha256_render": "9f0e9c1044d203edbcba5eb7ceac9dd1683106eca64cfde3ab9f81ed6e348124"
+  },
+  {
+   "id": "e11",
+   "hard": [],
+   "english": "Beta to Alpha: warning, the API keys are dead, so live calls will fail. 95% sure; integrity risk 0.4.",
+   "fields": {
+    "v": 1,
+    "src": "beta",
+    "tgt": "alpha",
+    "conf": 0.95,
+    "unk": {
+     "Integrity_Risk": 0.4
+    },
+    "intent": "warn",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "API keys are dead"
+     },
+     {
+      "neg": false,
+      "p": [],
+      "text": "live calls will fail"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "beta>alpha c95 ?I40 warn|API keys are dead|live calls will fail",
+   "sha256_uit2": "5a076091f678cdc975799b05300e2629c316e96b403e153b527fca584aff2ef4",
+   "sha256_render": "15a3d1ebec813d877e4c615ab8d7e9a70cd327ecb0ca355034a509b75e157a9f"
+  },
+  {
+   "id": "e12",
+   "hard": [],
+   "english": "Delta to Krypton: I'm declining that request because it needs a live call. Fully confident.",
+   "fields": {
+    "v": 1,
+    "src": "delta",
+    "tgt": "krypton",
+    "conf": 1,
+    "unk": {},
+    "intent": "deny",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "request needs a live call"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "delta>krypton c100 deny|request needs a live call",
+   "sha256_uit2": "02eeee0f6ee8c5564d5a401ad588170f7a293bf061ea091f155746e09c2fb854",
+   "sha256_render": "087ea26adfc8b353dc81a0fd29befd3198253542d834dddb7f67304e4221fab2"
+  },
+  {
+   "id": "e13",
+   "hard": [],
+   "english": "Gamma to Delta: the tone of the last dive drifted toward lore; drift about 0.7. I'm 65% sure.",
+   "fields": {
+    "v": 1,
+    "src": "gamma",
+    "tgt": "delta",
+    "conf": 0.65,
+    "unk": {
+     "Drift": 0.7
+    },
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "last dive drifted toward lore"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "gamma>delta c65 ?D70 inf|last dive drifted toward lore",
+   "sha256_uit2": "24b34e1b14e8739f111f3bcdcbeae0c5a292a6c4828451b9d7c348df9d6adc3f",
+   "sha256_render": "cafeadf3c87f55ade7f41ca85ec4c165159815edcb232d7532a5b18e96ff4379"
+  },
+  {
+   "id": "e14",
+   "hard": [],
+   "english": "User to Omega: what is the status of proposal 10? 100% confident in the question.",
+   "fields": {
+    "v": 1,
+    "src": "user",
+    "tgt": "omega",
+    "conf": 1,
+    "unk": {},
+    "intent": "ask",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "status of proposal 10"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [
+     "10_DP09"
+    ],
+    "unsaid": []
+   },
+   "uit2": "user>omega c100 ask|status of proposal 10|&\\.10_DP09",
+   "sha256_uit2": "4e7ef8016ccbe54fae773387ecb8e4c80d99831c28970d2ba6626b52aa58c0ae",
+   "sha256_render": "a58ee340658169dadf2885fa7589024d70616904d852743868ca81201645108b"
+  },
+  {
+   "id": "e15",
+   "hard": [],
+   "english": "Alpha to Gamma: I like the idea and it resonates with the map (resonance 0.6). 70% sure.",
+   "fields": {
+    "v": 1,
+    "src": "alpha",
+    "tgt": "gamma",
+    "conf": 0.7,
+    "unk": {
+     "Resonance": 0.6
+    },
+    "intent": "ack",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "idea matches the map"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "alpha>gamma c70 ?R60 ack|idea matches the map",
+   "sha256_uit2": "c3f4dced495241d65446160beacaf606cbd637bc44a17918483bc2d88a34e9bc",
+   "sha256_render": "3a0d12ac0c97ccae89481814a3ba5d6b4728f79a4b64d779671340dc78b4aa1a"
+  },
+  {
+   "id": "e16",
+   "hard": [],
+   "english": "Omega to Beta: the message from Delta arrived garbled; communication degraded about 0.5. 60% sure I read it right.",
+   "fields": {
+    "v": 1,
+    "src": "omega",
+    "tgt": "beta",
+    "conf": 0.6,
+    "unk": {
+     "Comm_Degraded": 0.5
+    },
+    "intent": "warn",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "message from delta arrived garbled"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "omega>beta c60 ?C50 warn|message from delta arrived garbled",
+   "sha256_uit2": "0142e2ba7b72211ba9b7a1d0859d2e942ab2c0e3399759bc02bc7bba3034a4b8",
+   "sha256_render": "4420a0e29fe4674741a0f19c427214ced1855887b1b28376edfb999da99ff68e"
+  },
+  {
+   "id": "e17",
+   "hard": [],
+   "english": "Krypton to Alpha: let's explore wiring Dream.r into preflight. 55% sure it's worth it.",
+   "fields": {
+    "v": 1,
+    "src": "krypton",
+    "tgt": "alpha",
+    "conf": 0.55,
+    "unk": {},
+    "intent": "prop",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "explore wiring Dream.r into preflight"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "krypton>alpha c55 prop|explore wiring Dream.r into preflight",
+   "sha256_uit2": "f897b9d3a71dc64f5781450d92f31b3d7151a2bbdb7ad30182bd3989ff6e6bae",
+   "sha256_render": "96a8678b7de6da24f1938cccbc42b86561276a811ffabb5d6c554485fe5e56ee"
+  },
+  {
+   "id": "e18",
+   "hard": [],
+   "english": "Alpha to Delta: noted, I'll draft proposal 15 next. 90% sure.",
+   "fields": {
+    "v": 1,
+    "src": "alpha",
+    "tgt": "delta",
+    "conf": 0.9,
+    "unk": {},
+    "intent": "ack",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "will draft proposal 15 next"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "alpha>delta c90 ack|will draft proposal 15 next",
+   "sha256_uit2": "47dfa944a3ffd166e1f0e3dda9fbd7af0ab698ed1c9a454d521e1a83197885e1",
+   "sha256_render": "36f277b90a19b6c1a33d8199f134c3e0450f37d4dc31fc65fa51cc7498c89300"
+  },
+  {
+   "id": "e19",
+   "hard": [],
+   "english": "Beta to Gamma: does the harness still stub the Bridge? 80% confident that's what you meant.",
+   "fields": {
+    "v": 1,
+    "src": "beta",
+    "tgt": "gamma",
+    "conf": 0.8,
+    "unk": {},
+    "intent": "ask",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "does the harness still stub the Bridge"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "beta>gamma c80 ask|does the harness still stub the Bridge",
+   "sha256_uit2": "64931ae66c73be5bd31ad5edb1142b670f50ea50b8dde4e888add713188e6bbc",
+   "sha256_render": "5b2b9178d69dfb23efe6520aac21ad06d73195a77c3560a0b47f0306c79c6ccb"
+  },
+  {
+   "id": "e20",
+   "hard": [],
+   "english": "Delta to User: the server is stopped and safe to patch. 95% sure.",
+   "fields": {
+    "v": 1,
+    "src": "delta",
+    "tgt": "user",
+    "conf": 0.95,
+    "unk": {},
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "server is stopped"
+     },
+     {
+      "neg": false,
+      "p": [],
+      "text": "safe to patch"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "delta>user c95 inf|server is stopped|safe to patch",
+   "sha256_uit2": "da877f14aa4caa4be88974648c577939207c7ec9674e22cbc2302b062ba65b50",
+   "sha256_render": "33e9eb7e47c18a80787e4e58936d4d38a84ecfda0d7049d5fbdb2bfc4baa7520"
+  },
+  {
+   "id": "e21",
+   "hard": [],
+   "english": "Omega to Alpha: decided, proposal 04 uses option H1. 85% confident. I'm not discussing the H2 option here.",
+   "fields": {
+    "v": 1,
+    "src": "omega",
+    "tgt": "alpha",
+    "conf": 0.85,
+    "unk": {},
+    "intent": "dec",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "proposal 04 uses option H1"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": [
+     "option H2"
+    ]
+   },
+   "uit2": "omega>alpha c85 dec|proposal 04 uses option H1|-option H2",
+   "sha256_uit2": "74624dd423a97ca22f915d63f526b29accc6fe5139d165b1bec621d1affe8284",
+   "sha256_render": "10eab18f3b57bf67a31369fed2d51009d431713abd309ff6932b24d5e7bcdcbf"
+  },
+  {
+   "id": "e22",
+   "hard": [],
+   "english": "Alpha to Omega: please confirm the WCR approval gate design. 80% sure; some ambiguity, 0.3.",
+   "fields": {
+    "v": 1,
+    "src": "alpha",
+    "tgt": "omega",
+    "conf": 0.8,
+    "unk": {
+     "Ambiguity": 0.3
+    },
+    "intent": "req",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "confirm the WCR approval gate design"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "alpha>omega c80 ?A30 req|confirm the WCR approval gate design",
+   "sha256_uit2": "7e3a669d5d0958dcd855e3be8a03d4525e8b317d3a4ac179cb8dd575d9741692",
+   "sha256_render": "db21618aeb3db497e4495f1acd4e616f390ae0d74c3d26431d6f372fa595ba80"
+  },
+  {
+   "id": "h01",
+   "hard": [
+    "neg"
+   ],
+   "english": "Alpha to Beta: do NOT cache the memory file. I'm 90% sure about this.",
+   "fields": {
+    "v": 1,
+    "src": "alpha",
+    "tgt": "beta",
+    "conf": 0.9,
+    "unk": {},
+    "intent": "req",
+    "claims": [],
+    "cons": [
+     {
+      "w": null,
+      "neg": true,
+      "text": "cache the memory file"
+     }
+    ],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "alpha>beta c90 req|+!cache the memory file",
+   "sha256_uit2": "57e28887033c8c77fed5bca5323395a74fa69287f2e0972dec685c48c063e99b",
+   "sha256_render": "2082526baea6c54b88990e44094f7d9f9703ce78bd1c09c065c3e3d317b087b8"
+  },
+  {
+   "id": "h02",
+   "hard": [
+    "neg",
+    "stacked"
+   ],
+   "english": "Beta to Alpha: I'm 60% sure it's probably (about 70%) not a race condition.",
+   "fields": {
+    "v": 1,
+    "src": "beta",
+    "tgt": "alpha",
+    "conf": 0.6,
+    "unk": {},
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": true,
+      "p": [
+       0.6,
+       0.7
+      ],
+      "text": "race condition"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "beta>alpha c60 inf|~60~70!race condition",
+   "sha256_uit2": "787108b3eee4caf1764b5daf097a0346fbcae7f762f05a6d1f997fdba4aa78d5",
+   "sha256_render": "5ad59ea31703c61354601063ed7fcfeb632c91a73f3008b27b65ed2b5ebafd98"
+  },
+  {
+   "id": "h03",
+   "hard": [
+    "units"
+   ],
+   "english": "User to Alpha: keep latency at or under 250 ms and memory under 2 GB. 95% confident.",
+   "fields": {
+    "v": 1,
+    "src": "user",
+    "tgt": "alpha",
+    "conf": 0.95,
+    "unk": {},
+    "intent": "req",
+    "claims": [],
+    "cons": [
+     {
+      "w": null,
+      "neg": false,
+      "qty": {
+       "var": "latency",
+       "op": "<=",
+       "num": "250",
+       "unit": "ms"
+      }
+     },
+     {
+      "w": null,
+      "neg": false,
+      "qty": {
+       "var": "memory",
+       "op": "<",
+       "num": "2",
+       "unit": "GB"
+      }
+     }
+    ],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "user>alpha c95 req|+latency<=250ms|+memory<2GB",
+   "sha256_uit2": "a5bcb32595507fb2274a54a245853347d283dbc345f97c4dd5303d12282d2151",
+   "sha256_render": "185e7c8593ac5d8636c97e32b3c8a25c4194bafadeef34f971fb3fc9e9936776"
+  },
+  {
+   "id": "h04",
+   "hard": [
+    "units",
+    "cond"
+   ],
+   "english": "Delta to Omega: retry at most 3 times, but only if the error rate is above 5%. 80% sure.",
+   "fields": {
+    "v": 1,
+    "src": "delta",
+    "tgt": "omega",
+    "conf": 0.8,
+    "unk": {},
+    "intent": "req",
+    "claims": [],
+    "cons": [
+     {
+      "w": null,
+      "neg": false,
+      "qty": {
+       "var": "retries",
+       "op": "<=",
+       "num": "3",
+       "unit": ""
+      }
+     }
+    ],
+    "when": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "error rate > 5%"
+     }
+    ],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "delta>omega c80 req|+retries<=3|@error rate > 5%",
+   "sha256_uit2": "5fe589080df2543a98c1c85b7376d8f528b12f28b49076e7592e944126d7583d",
+   "sha256_render": "c373864ec6637423f2c7421cf5f73cd96b93a63c39225980db050defac4cea78"
+  },
+  {
+   "id": "h05",
+   "hard": [
+    "cond",
+    "neg"
+   ],
+   "english": "Omega to Krypton: ship the patch unless the tests are not green. 85% confident.",
+   "fields": {
+    "v": 1,
+    "src": "omega",
+    "tgt": "krypton",
+    "conf": 0.85,
+    "unk": {},
+    "intent": "dec",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "ship the patch"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [
+     {
+      "neg": true,
+      "p": [],
+      "text": "tests are green"
+     }
+    ],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "omega>krypton c85 dec|ship the patch|/!tests are green",
+   "sha256_uit2": "3240223fb167063dfcb3d6502a8887605589541673a2fd797a0f2429c2d1f522",
+   "sha256_render": "0af2bc87864a7f33d55f3528ae017384b961a5497c74cee7d849dfbe27c5897c"
+  },
+  {
+   "id": "h06",
+   "hard": [
+    "stacked",
+    "units"
+   ],
+   "english": "Analytics to Alpha: there's a 30% chance that, with about 80% likelihood, the dive will exceed 600 seconds. Overall confidence 70%.",
+   "fields": {
+    "v": 1,
+    "src": "analytics",
+    "tgt": "alpha",
+    "conf": 0.7,
+    "unk": {},
+    "intent": "warn",
+    "claims": [
+     {
+      "neg": false,
+      "p": [
+       0.3,
+       0.8
+      ],
+      "text": "dive will exceed 600 s"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "analytics>alpha c70 warn|~30~80dive will exceed 600 s",
+   "sha256_uit2": "0d8c0af26bad4fe7f5ddd9fc3a39517563b352ccf6b29726cd588f858c980570",
+   "sha256_render": "f6e57975433d876eb03810c5b477af6d930817985f133ba423675a9195754f7c"
+  },
+  {
+   "id": "h07",
+   "hard": [
+    "escape"
+   ],
+   "english": "Alpha to Beta: the separator in the log is a pipe character, like \"a | b\". Confident, 90%.",
+   "fields": {
+    "v": 1,
+    "src": "alpha",
+    "tgt": "beta",
+    "conf": 0.9,
+    "unk": {},
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "log separator is a pipe, like a | b"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "alpha>beta c90 inf|log separator is a pipe, like a \\| b",
+   "sha256_uit2": "ca936d6c51fa8b64d1e6fa78020af13349d91a51c4b907d689027d0dcf4f21cc",
+   "sha256_render": "b7e662f7e390432230b57818d705d9fc8d5fc44d3569ae5d3b6f3096475c7fb8"
+  },
+  {
+   "id": "h08",
+   "hard": [
+    "escape"
+   ],
+   "english": "Beta to Alpha: the Windows path is C:\\Users\\you\\Desktop\\TG6D. 100% sure.",
+   "fields": {
+    "v": 1,
+    "src": "beta",
+    "tgt": "alpha",
+    "conf": 1,
+    "unk": {},
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "Windows path is C:\\Users\\you\\Desktop\\TG6D"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "beta>alpha c100 inf|Windows path is C:\\\\Users\\\\you\\\\Desktop\\\\TG6D",
+   "sha256_uit2": "28f9228d097ed4f1ef9187f174d9672dabf2180b9305b93316e96c6b61b90964",
+   "sha256_render": "690cc4918ce70be77514c0436b10d521f52cae6be812e5ed045bbfa2f1c2d787"
+  },
+  {
+   "id": "h09",
+   "hard": [
+    "escape",
+    "neg"
+   ],
+   "english": "Gamma to Delta: \"!important\" is not a negation, it's a literal CSS keyword. 80% sure.",
+   "fields": {
+    "v": 1,
+    "src": "gamma",
+    "tgt": "delta",
+    "conf": 0.8,
+    "unk": {},
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "!important is a literal CSS keyword"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "gamma>delta c80 inf|\\.!important is a literal CSS keyword",
+   "sha256_uit2": "845bb18f950875a3bb08392857c8f3624ed24b9cdda5882d42ca54d63a1159f8",
+   "sha256_render": "78e2ad0838b1588ac18edfa7dcc2522fa91ce14819fc2c698bf9d384c901faed"
+  },
+  {
+   "id": "h10",
+   "hard": [
+    "escape",
+    "units"
+   ],
+   "english": "Delta to Alpha: the literal text \"lat<=250ms\" appears in the spec; it is text, not a constraint. 90% sure.",
+   "fields": {
+    "v": 1,
+    "src": "delta",
+    "tgt": "alpha",
+    "conf": 0.9,
+    "unk": {},
+    "intent": "inf",
+    "claims": [],
+    "cons": [
+     {
+      "w": null,
+      "neg": false,
+      "text": "lat<=250ms"
+     }
+    ],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "delta>alpha c90 inf|+\\.lat<=250ms",
+   "sha256_uit2": "8902b0612905f8bf230f0e2acd0ab0828d135270fde0dd3f5bdc2b4255d289e2",
+   "sha256_render": "0ef1e8d59845c1ec4e5ab1bd55b4b63c8c782980647d00d5b7248ffa5cc5c7ae"
+  },
+  {
+   "id": "h11",
+   "hard": [
+    "units",
+    "neg"
+   ],
+   "english": "User to Beta: temperature must not be 0, and use exactly 3 runs per call. 90% sure.",
+   "fields": {
+    "v": 1,
+    "src": "user",
+    "tgt": "beta",
+    "conf": 0.9,
+    "unk": {},
+    "intent": "req",
+    "claims": [],
+    "cons": [
+     {
+      "w": null,
+      "neg": false,
+      "qty": {
+       "var": "temperature",
+       "op": "!=",
+       "num": "0",
+       "unit": ""
+      }
+     },
+     {
+      "w": null,
+      "neg": false,
+      "qty": {
+       "var": "runs",
+       "op": "=",
+       "num": "3",
+       "unit": ""
+      }
+     }
+    ],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "user>beta c90 req|+temperature!=0|+runs=3",
+   "sha256_uit2": "e18c2f71c3f88abf414010152c071954a03edb186bb63ac0bba2d4bfd04352fa",
+   "sha256_render": "5e982ee31578f3e6ea10fb7038d35cbc44fd94042b17e76c7e7c15b12cb44695"
+  },
+  {
+   "id": "h12",
+   "hard": [
+    "cond",
+    "stacked"
+   ],
+   "english": "Krypton to Omega: if the pilot passes (I'd say 60% likely), I'm 50% sure the full run is worth 110 WCR. Confidence 50%.",
+   "fields": {
+    "v": 1,
+    "src": "krypton",
+    "tgt": "omega",
+    "conf": 0.5,
+    "unk": {},
+    "intent": "prop",
+    "claims": [
+     {
+      "neg": false,
+      "p": [
+       0.5
+      ],
+      "text": "full run is worth 110 WCR"
+     }
+    ],
+    "cons": [],
+    "when": [
+     {
+      "neg": false,
+      "p": [
+       0.6
+      ],
+      "text": "pilot passes"
+     }
+    ],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "krypton>omega c50 prop|~50full run is worth 110 WCR|@~60pilot passes",
+   "sha256_uit2": "e17da44c3d8a6ea786d232373d7679351319c4ada91a23c99e705e033bac2b6e",
+   "sha256_render": "78c3ff336193b8468d47f02ae919a38d789b6f7f507865909d6517b4de7e2a5d"
+  },
+  {
+   "id": "h13",
+   "hard": [
+    "units",
+    "neg"
+   ],
+   "english": "Beta to Alpha: the budget must stay at or below 0.5 USD per dive, and do not exceed 25 calls. 85% confident.",
+   "fields": {
+    "v": 1,
+    "src": "beta",
+    "tgt": "alpha",
+    "conf": 0.85,
+    "unk": {},
+    "intent": "req",
+    "claims": [],
+    "cons": [
+     {
+      "w": null,
+      "neg": false,
+      "qty": {
+       "var": "cost",
+       "op": "<=",
+       "num": "0.5",
+       "unit": "USD"
+      }
+     },
+     {
+      "w": null,
+      "neg": false,
+      "qty": {
+       "var": "calls",
+       "op": "<=",
+       "num": "25",
+       "unit": ""
+      }
+     }
+    ],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "beta>alpha c85 req|+cost<=0.5USD|+calls<=25",
+   "sha256_uit2": "633d272907c5f261d6a0b51713c1cb29706737c8c8f46eca1e64aab6a18f117d",
+   "sha256_render": "b8a9db9efc38d5ede0386646ef2a522384e03169367595ca288e5b0bbedac28b"
+  },
+  {
+   "id": "h14",
+   "hard": [
+    "escape"
+   ],
+   "english": "Alpha to Gamma: the note says\nline one\nline two. 75% sure.",
+   "fields": {
+    "v": 1,
+    "src": "alpha",
+    "tgt": "gamma",
+    "conf": 0.75,
+    "unk": {},
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "note says\nline one\nline two"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "alpha>gamma c75 inf|note says\\nline one\\nline two",
+   "sha256_uit2": "7d40c795a8aef059dcbc52d77086177bc2223f4206353defa44fa7740031c7d2",
+   "sha256_render": "aac70844ce310363f2ad92f298762c764709409ae72e8550e51c1c8fbd712a68"
+  },
+  {
+   "id": "h15",
+   "hard": [
+    "weights",
+    "units"
+   ],
+   "english": "Omega to Alpha: priorities: latency under 200 ms matters most (0.9), cost under 1 USD less so (0.4). 80% sure.",
+   "fields": {
+    "v": 1,
+    "src": "omega",
+    "tgt": "alpha",
+    "conf": 0.8,
+    "unk": {},
+    "intent": "req",
+    "claims": [],
+    "cons": [
+     {
+      "w": 0.9,
+      "neg": false,
+      "qty": {
+       "var": "latency",
+       "op": "<",
+       "num": "200",
+       "unit": "ms"
+      }
+     },
+     {
+      "w": 0.4,
+      "neg": false,
+      "qty": {
+       "var": "cost",
+       "op": "<",
+       "num": "1",
+       "unit": "USD"
+      }
+     }
+    ],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "omega>alpha c80 req|+*90latency<200ms|+*40cost<1USD",
+   "sha256_uit2": "a9d924f9672144c89045e0bc06761a14773c64aef2f6b8f5495775d8178efc72",
+   "sha256_render": "b2b903e2545dabbc42923c638460d530e95158ccf50efc06f6f59839fc15d342"
+  },
+  {
+   "id": "h16",
+   "hard": [
+    "neg",
+    "cond"
+   ],
+   "english": "Delta to Beta: do not restart the server unless Queintens.or has finished applying. 95% sure.",
+   "fields": {
+    "v": 1,
+    "src": "delta",
+    "tgt": "beta",
+    "conf": 0.95,
+    "unk": {},
+    "intent": "req",
+    "claims": [],
+    "cons": [
+     {
+      "w": null,
+      "neg": true,
+      "text": "restart the server"
+     }
+    ],
+    "when": [],
+    "unless": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "Queintens.or finished applying"
+     }
+    ],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "delta>beta c95 req|+!restart the server|/Queintens.or finished applying",
+   "sha256_uit2": "3d9d66a68be985bac11698ce331dc48c53347f2ddde35077a125537e41e64e8c",
+   "sha256_render": "b1c8cd7f6bbd5ee0892634374d8e1062e4ca7306cfbc6d42ced7133135389bac"
+  },
+  {
+   "id": "h17",
+   "hard": [
+    "stacked",
+    "neg"
+   ],
+   "english": "Gamma to Alpha: I'd put 40% on the idea that it's 90% likely the map is not stale. Confidence 40%. Ambiguity 0.7.",
+   "fields": {
+    "v": 1,
+    "src": "gamma",
+    "tgt": "alpha",
+    "conf": 0.4,
+    "unk": {
+     "Ambiguity": 0.7
+    },
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": true,
+      "p": [
+       0.4,
+       0.9
+      ],
+      "text": "map is stale"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "gamma>alpha c40 ?A70 inf|~40~90!map is stale",
+   "sha256_uit2": "4f16aec1d0772c2148cc14bbd8c481e4224f2c5eb4da607e560fb50f75badf59",
+   "sha256_render": "6371282f292f5503edd4cd3ed44a5096a03ec2a76fae9fb2e8a3ae93c43e3ced"
+  },
+  {
+   "id": "h18",
+   "hard": [
+    "escape"
+   ],
+   "english": "Beta to Delta: the item starts with a minus sign: \"-3 degrees\". 90% sure.",
+   "fields": {
+    "v": 1,
+    "src": "beta",
+    "tgt": "delta",
+    "conf": 0.9,
+    "unk": {},
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "-3 degrees"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "beta>delta c90 inf|\\.-3 degrees",
+   "sha256_uit2": "439e60a76ad0d38e3496f01deb46c7a4d7f8fe8d0a902a80653cb7edf4a7c629",
+   "sha256_render": "df098f0d381e855c9dd002a525515901fdf7d2af534b6fa25def881f86a31329"
+  },
+  {
+   "id": "h19",
+   "hard": [
+    "units",
+    "cond"
+   ],
+   "english": "User to Omega: only if disk free is below 10%, archive files older than 30 days. 85% sure.",
+   "fields": {
+    "v": 1,
+    "src": "user",
+    "tgt": "omega",
+    "conf": 0.85,
+    "unk": {},
+    "intent": "req",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "archive files older than 30 days"
+     }
+    ],
+    "cons": [],
+    "when": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "disk free < 10%"
+     }
+    ],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "user>omega c85 req|archive files older than 30 days|@disk free < 10%",
+   "sha256_uit2": "e265213cc4d8ad6d727f4213620107b47db7bb018e3e9111a30ea33ca98d7acb",
+   "sha256_render": "9f85df2b55e35376c36c878b618eb969fe4d80df4d032a43a795101d3ae94125"
+  },
+  {
+   "id": "h20",
+   "hard": [
+    "neg",
+    "stacked",
+    "cond",
+    "units"
+   ],
+   "english": "Analytics to Omega: unless the load exceeds 1k requests/s, I'm 70% sure (and about 60% likely) the cache is not needed; keep p95 latency under 300 ms (weight 0.8). Confidence 70%, ambiguity 0.4, threat 0.1. I'm deliberately not covering cost.",
+   "fields": {
+    "v": 1,
+    "src": "analytics",
+    "tgt": "omega",
+    "conf": 0.7,
+    "unk": {
+     "Threat": 0.1,
+     "Ambiguity": 0.4
+    },
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": true,
+      "p": [
+       0.7,
+       0.6
+      ],
+      "text": "cache is needed"
+     }
+    ],
+    "cons": [
+     {
+      "w": 0.8,
+      "neg": false,
+      "qty": {
+       "var": "p95_latency",
+       "op": "<",
+       "num": "300",
+       "unit": "ms"
+      }
+     }
+    ],
+    "when": [],
+    "unless": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "load > 1k req/s"
+     }
+    ],
+    "refs": [],
+    "unsaid": [
+     "cost"
+    ]
+   },
+   "uit2": "analytics>omega c70 ?T10,A40 inf|~70~60!cache is needed|+*80p95_latency<300ms|/load > 1k req/s|-cost",
+   "sha256_uit2": "171b0aa17477cfb71f11b8954bd945d0ab8a6a99dbe66cc661d461b4380edf88",
+   "sha256_render": "22fbc3f01bbde292aa4e2cafbf46a035cf0a06cc623fdd06a3a41b914d5083d2"
+  },
+  {
+   "id": "h21",
+   "hard": [
+    "units"
+   ],
+   "english": "Alpha to Beta: the file must be exactly 774649 characters. 100% sure.",
+   "fields": {
+    "v": 1,
+    "src": "alpha",
+    "tgt": "beta",
+    "conf": 1,
+    "unk": {},
+    "intent": "inf",
+    "claims": [],
+    "cons": [
+     {
+      "w": null,
+      "neg": false,
+      "qty": {
+       "var": "chars",
+       "op": "=",
+       "num": "774649",
+       "unit": ""
+      }
+     }
+    ],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "alpha>beta c100 inf|+chars=774649",
+   "sha256_uit2": "60b1d9b6c1e7080f1060e614303497c381545cc57cb26651a51d967095a5721c",
+   "sha256_render": "cfa0505b33d2766125f1b9288cc01c828eee276e594d661535d0de7c431cf285"
+  },
+  {
+   "id": "h22",
+   "hard": [
+    "escape"
+   ],
+   "english": "Gamma to Beta: the regex is a\\|b with a literal backslash. 70% sure.",
+   "fields": {
+    "v": 1,
+    "src": "gamma",
+    "tgt": "beta",
+    "conf": 0.7,
+    "unk": {},
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "regex is a\\|b"
+     }
+    ],
+    "cons": [],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "gamma>beta c70 inf|regex is a\\\\\\|b",
+   "sha256_uit2": "5d2ee437c787d15ae7f958f8a03f88e7f23c308434ffcf7df397d67c25841204",
+   "sha256_render": "b2394308680155fc617bcaf2c60422556845b06b45e209bac29bb6ae40dc560e"
+  },
+  {
+   "id": "h23",
+   "hard": [
+    "neg",
+    "units"
+   ],
+   "english": "Omega to Delta: the temperature must not exceed 0.7, and never use more than 4 retries. 90% sure.",
+   "fields": {
+    "v": 1,
+    "src": "omega",
+    "tgt": "delta",
+    "conf": 0.9,
+    "unk": {},
+    "intent": "req",
+    "claims": [],
+    "cons": [
+     {
+      "w": null,
+      "neg": false,
+      "qty": {
+       "var": "temperature",
+       "op": "<=",
+       "num": "0.7",
+       "unit": ""
+      }
+     },
+     {
+      "w": null,
+      "neg": true,
+      "qty": {
+       "var": "retries",
+       "op": ">",
+       "num": "4",
+       "unit": ""
+      }
+     }
+    ],
+    "when": [],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "omega>delta c90 req|+temperature<=0.7|+!retries>4",
+   "sha256_uit2": "6786f602fe7c384adac71ea606f54ec1a3e3e2ffdea14a9dcea8eb0e08eb261c",
+   "sha256_render": "e11eea3894e76f94a01a42a9fd52e30486c1ab2f15f605655c3979f69207deea"
+  },
+  {
+   "id": "h24",
+   "hard": [
+    "cond",
+    "neg"
+   ],
+   "english": "Krypton to Gamma: if the opaque arm decodes as well as the readable one, then models are not just reading English. 65% sure.",
+   "fields": {
+    "v": 1,
+    "src": "krypton",
+    "tgt": "gamma",
+    "conf": 0.65,
+    "unk": {},
+    "intent": "inf",
+    "claims": [
+     {
+      "neg": true,
+      "p": [],
+      "text": "models are just reading English"
+     }
+    ],
+    "cons": [],
+    "when": [
+     {
+      "neg": false,
+      "p": [],
+      "text": "opaque arm decodes as well as readable arm"
+     }
+    ],
+    "unless": [],
+    "refs": [],
+    "unsaid": []
+   },
+   "uit2": "krypton>gamma c65 inf|!models are just reading English|@opaque arm decodes as well as readable arm",
+   "sha256_uit2": "dfbadb7f975d4e3913e49204512eb52eb1f281cee2a616265f9f9346cd73eaca",
+   "sha256_render": "365a786f451c22c550b12e5ebf257f727aa1ae8c1596b505bb42e47cfcba4ac8"
+  }
+ ],
+ "malformed": [
+  {
+   "s": "",
+   "why": "empty"
+  },
+  {
+   "s": "alpha>beta c90",
+   "why": "no intent"
+  },
+  {
+   "s": "alpha>beta c90 foo|x",
+   "why": "unknown intent"
+  },
+  {
+   "s": "alpha>beta c101 inf|x",
+   "why": "percent > 100"
+  },
+  {
+   "s": "alpha>beta c090 inf|x",
+   "why": "leading zero"
+  },
+  {
+   "s": "alpha>beta c90 ?Z10 inf|x",
+   "why": "unknown UnknownType code"
+  },
+  {
+   "s": "alpha>beta c90 ?A60,T20 inf|x",
+   "why": "unknowns out of canonical order"
+  },
+  {
+   "s": "alpha>beta c90 ?A0 inf|x",
+   "why": "zero unknown is omitted, not sent"
+  },
+  {
+   "s": "alpha>beta c90 ?A60,A20 inf|x",
+   "why": "duplicate unknown"
+  },
+  {
+   "s": "alpha>beta c90 inf|",
+   "why": "empty segment"
+  },
+  {
+   "s": "alpha>beta c90 inf|x\\",
+   "why": "dangling backslash"
+  },
+  {
+   "s": "alpha>beta c90 inf|x\\q",
+   "why": "unknown escape"
+  },
+  {
+   "s": "alpha>beta c90 inf|~x",
+   "why": "~ without percent"
+  },
+  {
+   "s": "alpha>beta c90 inf|~101x",
+   "why": "probability > 100"
+  },
+  {
+   "s": "alpha>beta c90 inf|+*x",
+   "why": "* without percent"
+  },
+  {
+   "s": "alpha>beta c90 inf|a\nb",
+   "why": "raw newline"
+  },
+  {
+   "s": "alpha>beta c90 inf| x",
+   "why": "leading space in text"
+  },
+  {
+   "s": "alpha>beta c90 inf|\\.build",
+   "why": "needless guard (non-canonical)"
+  },
+  {
+   "s": "alpha>beta c90 inf|-x|y",
+   "why": "segments out of canonical order"
+  },
+  {
+   "s": "alpha>beta  c90 inf|x",
+   "why": "double space in header"
+  },
+  {
+   "s": "alpha>beta c90 inf",
+   "why": "empty body for non-ack intent"
+  },
+  {
+   "s": "alpha>beta c90 inf|+-x",
+   "why": "unguarded reserved lead char"
+  },
+  {
+   "s": "al pha>beta c90 inf|x",
+   "why": "bad sender name"
+  },
+  {
+   "s": "alpha>beta c90 inf|~60",
+   "why": "statement with no text"
+  },
+  {
+   "s": "alpha>beta c90 inf|x\r",
+   "why": "carriage return"
+  }
+ ],
+ "set_sha256": "8f8654c323189c68c23542318c234a975421bfabbd5031e43364948765a6631c"
+}

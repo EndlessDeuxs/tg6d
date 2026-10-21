@@ -1,0 +1,8 @@
+UIT2 v1: one line; segments split by |
+Header: src>tgt cNN [?XNN,...] intent   (NN = percent 0-100; c = sender confidence)
+Unknowns ?: T threat N novel I integrity-risk C comm-degraded A ambiguity R resonance D drift
+Intent: req inf ask prop warn dec ack deny
+Segment by first char: none=claim; +constraint; @only if; /unless; &reference; -deliberately unsaid
+Claim, @, / prefixes: ~NN probability (stacked, outer first), ! NOT
+Constraint prefixes: *NN weight, ! must NOT; quantity form var<=250ms (ops < <= = != >= >)
+Escapes in text: \| bar, \\ backslash, \n newline, \. nothing (marks literal text)

@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+
+# Never commit your own keys or local run data
+twingate_keys.json
+*.enc
+.env
+Master Log File/
+Autocraft_Bay/

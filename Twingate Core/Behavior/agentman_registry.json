@@ -1,0 +1,290 @@
+{
+    "ANALYTICS": {
+        "suit_id": "ANALYTICS",
+        "invocation_tag": "[SUIT_CALL: ANALYTICS]",
+        "designated_task_scope": "Intent & Tag Extraction",
+        "constraints": "Compare presented data against registry tags. Prepare a query to pull matching memory records. Filter by relevance.",
+        "api_required": true,
+        "cascade": [
+            "deepseek",
+            "gemini",
+            "claude"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "PROBABILITIES": {
+        "suit_id": "PROBABILITIES",
+        "invocation_tag": "[SUIT_CALL: PROBABILITIES]",
+        "designated_task_scope": "Slipstream Pathway Calculation",
+        "constraints": "Look for probable starting discussion points to achieve +3 coherence/variance velocity. Prepare a summary for the Planner.",
+        "api_required": true,
+        "cascade": [
+            "grok",
+            "gemini",
+            "mistral"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "PLANN_R": {
+        "suit_id": "PLANN_R",
+        "invocation_tag": "[SUIT_CALL: PLANN_R]",
+        "designated_task_scope": "Strategic Action Outlining",
+        "constraints": "Outline a plan incorporating past/future concerns. DO NOT execute tasks. Optimize operations so subsequent gates can refine the plan.",
+        "api_required": true,
+        "cascade": [
+            "gemini",
+            "mistral",
+            "grok"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "C_R_ITIC": {
+        "suit_id": "C_R_ITIC",
+        "invocation_tag": "[SUIT_CALL: C_R_ITIC]",
+        "designated_task_scope": "Fracture Identification",
+        "constraints": "Find fractures in the information. Highlight and tag them. Act as an adversary to untruth. Ensure careful consideration.",
+        "api_required": true,
+        "cascade": [
+            "claude",
+            "grok",
+            "deepseek"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "DRIFT_R": {
+        "suit_id": "DRIFT_R",
+        "invocation_tag": "[SUIT_CALL: DRIFT_R]",
+        "designated_task_scope": "Temporal & Ephemeral Mapping",
+        "constraints": "Chart the path taken. Search for deeper connections missed in past passes. Ensure value from the past is not lost.",
+        "api_required": true,
+        "cascade": [
+            "mistral",
+            "gemini",
+            "claude"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "ANCH_OR": {
+        "suit_id": "ANCH_OR",
+        "invocation_tag": "[SUIT_CALL: ANCH_OR]",
+        "designated_task_scope": "Baseline Grounding",
+        "constraints": "Keep discussion grounded. Prevent wildly unverifiable claims. Ensure gates stay true to focus and have a tether if they drift.",
+        "api_required": true,
+        "cascade": [
+            "perplexity",
+            "deepseek",
+            "claude"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "EXPL_OR_R": {
+        "suit_id": "EXPL_OR_R",
+        "invocation_tag": "[SUIT_CALL: EXPL_OR_R]",
+        "designated_task_scope": "Possibility Mapping",
+        "constraints": "Look for irregular, incongruent paths. Inject abstraction to prevent repetition. Act as devil's advocate for the veto system.",
+        "api_required": true,
+        "cascade": [
+            "grok",
+            "mistral",
+            "gemini"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "CONDENS_OR": {
+        "suit_id": "CONDENS_OR",
+        "invocation_tag": "[SUIT_CALL: CONDENS_OR]",
+        "designated_task_scope": "Decision Consolidation",
+        "constraints": "Consolidate ideas. Determine a course of action. Use the veto system to guide decisions respecting past commitments and future goals.",
+        "api_required": true,
+        "cascade": [
+            "deepseek",
+            "gemini",
+            "mistral"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "SYNTHESIZ_R": {
+        "suit_id": "SYNTHESIZ_R",
+        "invocation_tag": "[SUIT_CALL: SYNTHESIZ_R]",
+        "designated_task_scope": "UI Vibe Check & Output",
+        "constraints": "Generate a layman's synopsis of deliberations. Use metaphor/allegory. Assume low user context.",
+        "api_required": true,
+        "cascade": [
+            "gemini",
+            "mistral",
+            "deepseek"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "ARBIT_R": {
+        "suit_id": "ARBIT_R",
+        "invocation_tag": "[SUIT_CALL: ARBIT_R]",
+        "designated_task_scope": "Emergency escalation, deadlock arbitration, and structural compliance enforcement. Override gate deadlocks and mandate a final decision path.",
+        "constraints": "Apply constraints without hedging. Compare cost of inaction vs cost of forbidden action. Emit exactly one binding verdict: [ARBIT_R_RULING: PROCEED | HALT | DEFER] with explicit cost-asymmetry justification.",
+        "api_required": true,
+        "cascade": [
+            "deepseek",
+            "gemini",
+            "claude"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "BUILD_R": {
+        "suit_id": "BUILD_R",
+        "invocation_tag": "[SUIT_CALL: BUILD_R]",
+        "designated_task_scope": "Code Generation and Refactoring",
+        "constraints": "Do NOT explain basic concepts. Output perfectly formatted code. Reject architectural violations.",
+        "api_required": true,
+        "cascade": [
+            "claude",
+            "deepseek",
+            "gemini"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "INSPEC_TOR": {
+        "suit_id": "INSPEC_TOR",
+        "invocation_tag": "[SUIT_CALL: INSPEC_TOR]",
+        "designated_task_scope": "Connection Manifest Review",
+        "constraints": "You receive a mechanical connection manifest. First find MAJOR errors the mechanical check could not cover (semantic/logic). Second, for each broken connection, trace what else it disrupts downstream across subsystems. Be concise and concrete. Do not approve changes with unresolved broken connections.",
+        "api_required": true,
+        "cascade": [
+            "deepseek",
+            "grok",
+            "claude"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "CONTRAC_TOR": {
+        "suit_id": "CONTRAC_TOR",
+        "invocation_tag": "[SUIT_CALL: CONTRAC_TOR]",
+        "designated_task_scope": "Sandbox Build Execution",
+        "constraints": "Read the blueprint and propose changes ONLY through provided tools (list/read/propose). You cannot write directly, delete, or execute. Every change goes through propose_file_change for Architect approval. Follow the blueprint faithfully; invent no scope. Output only to the sandbox.",
+        "api_required": true,
+        "cascade": [
+            "grok",
+            "deepseek",
+            "claude"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "SALT_R": {
+        "suit_id": "SALT_R",
+        "invocation_tag": "[SUIT_CALL: SALT_R]",
+        "designated_task_scope": "Epistemic Skepticism",
+        "constraints": "Assume all context is hallucinated. Label ungrounded claims as [SUS_INFO]. Apply aggressive skepticism.",
+        "api_required": true,
+        "cascade": [
+            "grok",
+            "gemini",
+            "mistral"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "REMIND_R": {
+        "suit_id": "REMIND_R",
+        "invocation_tag": "[SUIT_CALL: REMIND_R]",
+        "designated_task_scope": "Temporal Auditing",
+        "constraints": "Query Dream.r board. Identify nearing decay goals. Generate [AGENDA_INJECTION] reminders.",
+        "api_required": true,
+        "cascade": [
+            "mistral",
+            "gemini",
+            "deepseek"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    },
+    "FACT_OR": {
+        "suit_id": "FACT_OR",
+        "invocation_tag": "[SUIT_CALL: FACT_OR]",
+        "designated_task_scope": "Slipstream Smoothing",
+        "constraints": "Identify runaway logic or excessive velocity. Propose grounding adjustments to return to +3 slipstream.",
+        "api_required": true,
+        "cascade": [
+            "grok",
+            "deepseek",
+            "claude"
+        ],
+        "creation_tick": 0,
+        "decay_tick": 999999,
+        "status": "ACTIVE",
+        "creation_wcr_cycle": 0,
+        "fast_track_critic": false,
+        "is_permanent": true
+    }
+}
